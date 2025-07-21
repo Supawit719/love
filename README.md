@@ -76,7 +76,7 @@
   <div id="gallery">
     <img class="love-image" id="img1" src="507014599_1411380549903948_7062503089913360419_n.jpg" alt="แฟน1">
     <img class="love-image" id="img2" src="c:Screenshot 2025-07-21 172149.png" alt="แฟน2">
-    <img class="love-image" id="img3" src="c:\Users\ADMIN\Downloads\Screenshot 2025-07-21 172149.png" alt="แฟน3">
+    <img class="love-image" id="img3" src="Screenshot 2025-07-21 172221.png" alt="แฟน3">
   </div>
 
   <!-- สมุดปัดซ้าย/ขวา -->
