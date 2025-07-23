@@ -1,166 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
   <meta charset="UTF-8">
-  <title>สมุดรักของ Aki 💖</title>
+  <title>ปลาว่ายน้ำ</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'sans-serif';
-      background: #111;
-      color: white;
-      text-align: center;
+      margin: 0;
       overflow: hidden;
-    }
-
-    #fire-effect {
-      width: 100vw;
+      background: linear-gradient(to top, #0099cc, #66ccff);
       height: 100vh;
-      background: url(https://phoneky.co.uk/thumbs/screensavers/down/abstract/001_QZZHxT2R.gif) center/cover no-repeat;
-      position: fixed;
-      top: 0;
-      left: 0;
-      opacity: 1;
-      transition: opacity 4s ease-out;
-      z-index: 100;
     }
 
-    #gallery, #book {
-      display: none;
-      padding: 30px 20px;
-    }
-
-    .love-image {
-      width: 200px;
-      height: auto;
-      margin: 10px auto;
-      border-radius: 15px;
-      box-shadow: 0 0 20px #ff77aa;
-      display: none;
-    }
-
-    .page {
+    .fish {
       position: absolute;
-      top: 100px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      height: 300px;
-      background: #fff;
-      border-radius: 12px;
-      border: 3px dashed #ffb6c1;
-      color: #000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      width: 100px;
+      height: 50px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/0/0a/Fish_icon.svg') no-repeat;
+      background-size: contain;
+      animation: swim 10s linear infinite;
     }
 
-    .placeholder {
-      border: 2px dotted #999;
-      width: 100%;
-      height: 100%;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #888;
+    @keyframes swim {
+      0% {
+        left: -120px;
+        top: 40%;
+        transform: scaleX(1);
+      }
+      50% {
+        left: 100vw;
+        top: 50%;
+        transform: scaleX(1);
+      }
+      50.01% {
+        transform: scaleX(-1); /* พลิกปลา */
+      }
+      100% {
+        left: -120px;
+        top: 60%;
+        transform: scaleX(-1);
+      }
     }
   </style>
 </head>
 <body>
-
-  <div id="fire-effect"></div>
-
-  <!-- แสดงรูปแฟน -->
-  <div id="gallery">
-    <img class="love-image" id="img1" src="507014599_1411380549903948_7062503089913360419_n.jpg" alt="แฟน1">
-    <img class="love-image" id="img2" src="c:Screenshot 2025-07-21 172149.png" alt="แฟน2">
-    <img class="love-image" id="img3" src="Screenshot 2025-07-21 172221.png" alt="แฟน3">
-  </div>
-
-  <!-- สมุดปัดซ้าย/ขวา -->
-  <div id="book">
-    <div class="page" id="page1">
-      <div class="placeholder">📸 หน้านี้สำหรับรูปหวานๆ</div>
-    </div>
-    <div class="page" id="page2">
-      <div class="placeholder">💌 หน้านี้ใส่ข้อความรัก</div>
-    </div>
-    <div class="page" id="page3">
-      <div class="placeholder">🎁 หน้านี้สำหรับความทรงจำ</div>
-    </div>
-  </div>
-
-  <script>
-    const fire = document.getElementById("fire-effect");
-    const gallery = document.getElementById("gallery");
-    const images = [
-      document.getElementById("img1"),
-      document.getElementById("img2"),
-      document.getElementById("img3")
-    ];
-    const book = document.getElementById("book");
-    const pages = document.querySelectorAll(".page");
-    let currentPage = 0;
-
-    // ปัดซ้าย/ขวาเพื่อเปลี่ยนหน้า
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    function handleSwipe() {
-      if (touchEndX < touchStartX - 50) {
-        showPage(currentPage + 1); // ปัดซ้าย = ไปหน้าใหม่
-      }
-      if (touchEndX > touchStartX + 50) {
-        showPage(currentPage - 1); // ปัดขวา = กลับ
-      }
-    }
-
-    book.addEventListener('touchstart', e => {
-      touchStartX = e.changedTouches[0].screenX;
-    });
-
-    book.addEventListener('touchend', e => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    });
-
-    function showPage(index) {
-      if (index < 0 || index >= pages.length) return;
-      pages.forEach(p => p.style.display = "none");
-      pages[index].style.display = "flex";
-      currentPage = index;
-    }
-
-    function showImagesSequentially(index = 0) {
-      if (index >= images.length) {
-        setTimeout(() => {
-          gallery.style.display = "none";
-          book.style.display = "block";
-          showPage(0);
-        }, 1000);
-        return;
-      }
-      images[index].style.display = "block";
-      setTimeout(() => {
-        images[index].style.display = "none";
-        showImagesSequentially(index + 1);
-      }, 2000);
-    }
-
-    // เริ่มทำงานเมื่อโหลด
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        fire.style.opacity = 0;
-        setTimeout(() => {
-          fire.style.display = "none";
-          gallery.style.display = "block";
-          showImagesSequentially();
-        }, 4000);
-      }, 1000);
-    });
-  </script>
-
+  <div class="fish"></div>
 </body>
 </html>
+
